@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://www.idpf.org/2007/opf" version="2.0" unique-identifier="BookId">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+	<dc:title>Breakfast Instapaper</dc:title>
+	<dc:language>en-us</dc:language>
+  <meta name="cover" content="My_Cover" />
+	<dc:identifier id="BookId" opf:scheme="ISBN"></dc:identifier>
+	<dc:creator>Daniel Vydra</dc:creator>
+	<dc:publisher>Daniel Vydra</dc:publisher>
+	<dc:subject>Reference</dc:subject>
+	<dc:date><%= todays_date %></dc:date>
+  <dc:description>A selection of Australian political news.</dc:description>
+</metadata>
+<manifest>
+  <!-- HTML content files [mandatory] -->
+	<item id="toc" media-type="application/xhtml+xml" href="./toc.html"></item>
+	<item id="text" media-type="application/xhtml+xml" href="./intro.html"></item>
+  <% stories.each_with_index do |story, index|  %>
+	  <item id="story<%=index%>" media-type="application/xhtml+xml" href="./story<%=index%>.html"></item>
+  <% end %>
+
+	<item id="My_Table_of_Contents" media-type="application/x-dtbncx+xml" href="./breakfast.ncx"/>
+  <item id="My_Cover" media-type="image/png" href="./cover.png"/>
+</manifest>
+
+<spine toc="My_Table_of_Contents">
+  <% stories.each_with_index do |story, index|  %>
+	  <itemref idref="story<%=index%>"/>
+  <% end %>
+</spine>
+
+<guide>
+	<reference type="toc" title="Table of Contents" href="./toc.html"></reference>
+	<reference type="text" title="Welcome" href="./intro.html"></reference>
+</guide>
+
+</package>
