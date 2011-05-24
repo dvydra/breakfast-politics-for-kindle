@@ -1,0 +1,6 @@
+Gemfile.lock
+bin/
+node_modules/
+tmp/
+old/
+target/
