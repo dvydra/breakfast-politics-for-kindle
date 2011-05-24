@@ -12,10 +12,11 @@ The generated mobi file will be in `target/`
 Good luck. 
 
 TODO:
+
 - fix broken links and images from inside article bodies
 - clean up story html beyond what readability does (remove header weather forecast crap, "continue after ad" stuff)
 - parameterize stuff (retrieve the "current" url, etc)
-x package node dependencies (http://www.google.com.au/search?sourceid=chrome&ie=UTF-8&q=npm+package.json)
+- <strike>package node dependencies (http://www.google.com.au/search?sourceid=chrome&ie=UTF-8&q=npm+package.json)</strike>
 - better rakefile
 - actually just rewrite it from scratch with some test coverage :D
 
