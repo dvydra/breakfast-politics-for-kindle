@@ -1,0 +1,13 @@
+Breakfast Politics for Kindle
+-----------------------------
+
+This is horribly hacky at the moment, sorry.
+
+Run the default rake task to retrieve all articles from the breakfastpolitics.com url, readability-ize them and generate a kindle-formatted file. 
+
+You'll need a copy of kindlegen (http://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000234621) at bin/kindlegen
+You'll also need to install node.js, npm and do an npm install of coffee-script, htmlparser, jsdom, libxmljs, readability, soupselect & step (I think)
+Run a bundle install to retrieve the deps.
+The generated mobi file will be in target/
+
+Good luck. 
