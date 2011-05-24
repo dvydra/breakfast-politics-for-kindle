@@ -20,8 +20,9 @@ handler = new htmlparser.DefaultHandler (err, dom) ->
 
 parser = new htmlparser.Parser handler
 
-dump_stories = (data) ->
-  fs.writeFile 'bp.html', JSON.stringify(data), null
+dump_stories = (results) ->
+  # sys.debug(results)
+  fs.writeFile 'bp.html', JSON.stringify(results) , null
 
 retrieve_all_stories = (host, path) ->
   http.get host: host, port: 80, path: path, (response) ->
@@ -34,30 +35,24 @@ retrieve_all_stories = (host, path) ->
         group = this.group()
         stories.forEach (story) ->
           processStory story, group()
-      , (err, data) ->
-        if (err) then sys.debug err
-        else
-          return data
-      , (err, callback) ->
-        dump_stories(callback)
+      , (err, result) ->
+        dump_stories result
 
 
 processStory = (story, callback) ->
   url_parts = url_lib.parse story[1]
+  title = story[0]
   options =
     host: url_parts['host']
     port: 80
     path: url_parts['pathname']
   http.get options, (story_response) ->
-    processStoryResponse story_response, callback
-
-processStoryResponse = (story_response, callback) ->
-  story_response.setEncoding 'utf8'
-  story_body = ""
-  story_response.on 'data', (chunk) -> story_body = story_body + chunk
-  story_response.on 'end', ->
-    readability.parse story_body, "", (result) ->
-      callback null, result.content
+    story_response.setEncoding 'utf8'
+    story_body = ""
+    story_response.on 'data', (chunk) -> story_body = story_body + chunk
+    story_response.on 'end', ->
+      readability.parse story_body, "", (result) ->
+        callback null, {title: title, content: result.content}
 
 #retrieve_all_stories('www.breakfastpolitics.com', '/index/2011/05/friday-1.html')
 retrieve_all_stories('localhost', '/~dvydra/bp.html')
