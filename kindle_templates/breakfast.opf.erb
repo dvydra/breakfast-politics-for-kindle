@@ -13,19 +13,16 @@
 </metadata>
 <manifest>
   <!-- HTML content files [mandatory] -->
-	<item id="toc" media-type="application/xhtml+xml" href="./toc.html"></item>
-	<item id="text" media-type="application/xhtml+xml" href="./intro.html"></item>
-  <% stories.each_with_index do |story, index|  %>
-	  <item id="story<%=index%>" media-type="application/xhtml+xml" href="./story<%=index%>.html"></item>
-  <% end %>
-
 	<item id="My_Table_of_Contents" media-type="application/x-dtbncx+xml" href="./breakfast.ncx"/>
   <item id="My_Cover" media-type="image/png" href="./cover.png"/>
+  <item id="toc" media-type="application/xhtml+xml" href="./toc.html"></item>
+	<item id="text" media-type="application/xhtml+xml" href="./intro.html"></item>
+  <% stories.each_with_index do |story, index|  %><item id="story<%=index%>" media-type="application/xhtml+xml" href="./story<%=index%>.html"></item>
+  <% end %>
 </manifest>
 
 <spine toc="My_Table_of_Contents">
-  <% stories.each_with_index do |story, index|  %>
-	  <itemref idref="story<%=index%>"/>
+  <% stories.each_with_index do |story, index|  %><itemref idref="story<%=index%>"/>
   <% end %>
 </spine>
 

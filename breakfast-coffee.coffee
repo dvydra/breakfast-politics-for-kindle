@@ -52,7 +52,8 @@ processStory = (story, callback) ->
     story_response.on 'data', (chunk) -> story_body = story_body + chunk
     story_response.on 'end', ->
       readability.parse story_body, "", (result) ->
-        callback null, {title: title, content: result.content}
+        callback null, {title: title, url: story[1], content: result.content}
 
-retrieve_all_stories('www.breakfastpolitics.com', '/index/2011/05/tuesday-2.html')
+index_url = url_lib.parse process.argv[2]
+retrieve_all_stories(index_url['host'], index_url['pathname'])
 #retrieve_all_stories('localhost', '/~dvydra/bp.html')
