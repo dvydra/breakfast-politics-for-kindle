@@ -4,3 +4,4 @@ old/
 target/
 Gemfile.lock
 .DS_Store
+npm-debug.log
