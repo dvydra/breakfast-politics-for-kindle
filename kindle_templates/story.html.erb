@@ -7,7 +7,9 @@
 	<title><%= story["title"] %></title>
 </head>
 <body>
-<em><%= story["title"] %></em>
+<div><em><%= story["title"].chomp %></em></div>
+<div><h6><%= source %></h6></div>
 <%= story["content"] %>
+<div><small><%= story["url"] %></small></div>
 </body>
 </html>
