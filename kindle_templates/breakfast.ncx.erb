@@ -18,14 +18,8 @@
       </navLabel>
       <content src="./toc.html"/>
     </navPoint>
-    <navPoint class="welcome" id="welcome" playOrder="2">
-      <navLabel>
-        <text>Intro</text>
-      </navLabel>
-      <content src="./intro.html"/>
-    </navPoint>
     <% stories.each_with_index do |story, index|  %>
-      <navPoint class="chapter" id="chapter_<%=index%>" playOrder="<%=index+3%>">
+      <navPoint class="chapter" id="chapter_<%=index%>" playOrder="<%=index+2%>">
         <navLabel>
           <text><%=story['title']%></text>
         </navLabel>

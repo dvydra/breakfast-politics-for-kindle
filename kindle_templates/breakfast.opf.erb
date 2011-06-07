@@ -16,7 +16,6 @@
 	<item id="My_Table_of_Contents" media-type="application/x-dtbncx+xml" href="./breakfast.ncx"/>
   <item id="My_Cover" media-type="image/png" href="./cover.png"/>
   <item id="toc" media-type="application/xhtml+xml" href="./toc.html"></item>
-	<item id="text" media-type="application/xhtml+xml" href="./intro.html"></item>
   <% stories.each_with_index do |story, index|  %><item id="story<%=index%>" media-type="application/xhtml+xml" href="./story<%=index%>.html"></item>
   <% end %>
 </manifest>
@@ -28,7 +27,6 @@
 
 <guide>
 	<reference type="toc" title="Table of Contents" href="./toc.html"></reference>
-	<reference type="text" title="Welcome" href="./intro.html"></reference>
 </guide>
 
 </package>
