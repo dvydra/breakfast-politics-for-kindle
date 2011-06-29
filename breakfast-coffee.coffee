@@ -21,7 +21,6 @@ handler = new htmlparser.DefaultHandler (err, dom) ->
 parser = new htmlparser.Parser handler
 
 dump_stories = (results) ->
-  # sys.debug(results)
   fs.writeFile 'tmp/stories.json', JSON.stringify(results) , null
 
 retrieve_all_stories = (host, path) ->
@@ -56,4 +55,3 @@ processStory = (story, callback) ->
 
 index_url = url_lib.parse process.argv[2]
 retrieve_all_stories(index_url['host'], index_url['pathname'])
-#retrieve_all_stories('localhost', '/~dvydra/bp.html')
