@@ -18,5 +18,10 @@ task :default do
     ok = true
   end
   sh "cp tmp/#{filename} target/"
+  if File.directory?("/Volumes/Kindle/documents/")
+    sh "cp target/#{filename} /Volumes/Kindle/documents/" 
+  else
+    puts "Skipped copying to Kindle."
+  end
   puts "done"
 end
